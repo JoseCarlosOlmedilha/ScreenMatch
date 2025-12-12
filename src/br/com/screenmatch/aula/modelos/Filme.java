@@ -1,14 +1,21 @@
 package br.com.screenmatch.aula.modelos;
 
-public class Filme extends Titulo{
+import br.com.screenmatch.aula.calculos.Classificavel;
 
-    private String direto;
+public class Filme extends Titulo implements Classificavel {
 
-    public String getDireto() {
-        return direto;
+    private String diretor;
+
+    public String getDiretor() {
+        return this.diretor;
     }
 
-    public void setDireto(String direto) {
-        this.direto = direto;
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
+    }
+
+    @Override
+    public int getClassificacao() {
+        return (int) getMediaAvaliacoes() / 2;
     }
 }

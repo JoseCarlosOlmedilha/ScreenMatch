@@ -3,7 +3,7 @@ package br.com.screenmatch.aula.modelos;
 public class Titulo {
 
     private String nome;
-    private int anoDeLançamento;
+    private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes;
     private int totalDasAvaliacoes;
@@ -11,8 +11,10 @@ public class Titulo {
 
     public void exibirFichaTecnica(){
         System.out.println("-------------------Ficha Tecnica-------------------");
-        System.out.println("Nome: " + this.nome);
-        System.out.println("Ano de Lançamento: " + this.anoDeLançamento);
+        System.out.println("Nome do filme:"+ nome);
+        System.out.println("Ano de lançamento: " +anoDeLancamento);
+        System.out.println("Duração em minutos: " +duracaoEmMinutos);
+        System.out.println("Incluído no plano: " +incluidoNoPlano);
 
     }
 
@@ -33,12 +35,12 @@ public class Titulo {
         this.nome = nome;
     }
 
-    public int getAnoDeLançamento() {
-        return anoDeLançamento;
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
     }
 
-    public void setAnoDeLançamento(int anoDeLançamento) {
-        this.anoDeLançamento = anoDeLançamento;
+    public void setAnoDeLancamento(int anoDeLancamento) {
+        this.anoDeLancamento = anoDeLancamento;
     }
 
     public boolean isIncluidoNoPlano() {

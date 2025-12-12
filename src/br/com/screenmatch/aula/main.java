@@ -1,35 +1,51 @@
 package br.com.screenmatch.aula;
 
+import br.com.screenmatch.aula.calculos.CalculadoraDeTempo;
+import br.com.screenmatch.aula.calculos.FiltroRecomendacao;
+import br.com.screenmatch.aula.modelos.Episodio;
 import br.com.screenmatch.aula.modelos.Filme;
 import br.com.screenmatch.aula.modelos.Serie;
 
 public class main {
     public static void main(String[] args) {
 
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("O Poderoso Chefão");
-        meuFilme.setAnoDeLançamento(1970);
-        meuFilme.setDuracaoEmMinutos(180);
-        System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos() + " minutos");
+        Filme favorito = new Filme();
+        favorito.setNome("The Matrix");
+        favorito.setAnoDeLancamento(1999);
+        favorito.setDuracaoEmMinutos(135);
+        favorito.setIncluidoNoPlano(true);
 
-        meuFilme.exibirFichaTecnica();
-        meuFilme.avalia(8);
-        meuFilme.avalia(5);
-        meuFilme.avalia(10);
+        Filme outro = new Filme();
+        outro.setNome("John Wick");
+        outro.setAnoDeLancamento(2014);
+        outro.setDuracaoEmMinutos(101);
+        outro.setIncluidoNoPlano(true);
 
-        System.out.println("Total de avaliações: " + meuFilme.getTotalDasAvaliacoes());
-        System.out.println(meuFilme.getMediaAvaliacoes());
+        Serie serie = new Serie();
+        serie.setNome("La Casa de Papel");
+        serie.setAnoDeLancamento(2017);
+        serie.setIncluidoNoPlano(true);
+        serie.setAtiva(true);
+        serie.setTemporadas(5);
+        serie.setEpisodioPorTemporada(10);
+        serie.setMinutosPorEpisodio(45);
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(favorito);
+        calculadora.inclui(outro);
+        calculadora.inclui(serie);
+
+        System.out.println("Tempo total: " +calculadora.getTempoTotal());
+
+        FiltroRecomendacao filtroRecomendacao = new FiltroRecomendacao();
+        filtroRecomendacao.filtra(favorito);
+
+        Episodio episodio = new Episodio();
+        episodio.setId(1);
+        episodio.setSerie(serie);
+        episodio.setTotalVisualizacoes(300);
 
 
-
-
-        Serie lost = new Serie();
-        lost.setNome("Lost");
-        lost.setAnoDeLançamento(2000);
-        lost.exibirFichaTecnica();
-        lost.setTemporadas(10);
-        lost.setEpisodioPorTemporada(10);
-        lost.setMinutosPorEpisodio(50);
-        System.out.println("Duração para maratonar lost: " + lost.getDuracaoEmMinutos() + " minutos");
+        filtroRecomendacao.filtra(episodio);
     }
 }
